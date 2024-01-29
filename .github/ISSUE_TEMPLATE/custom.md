@@ -10,6 +10,7 @@ assignees: ''
 ### Issue description ###
 
 ### Checkpoint boxes ###
-- []
-- []
-- []
+- [ ]
+- [ ]
+- [ ]
+ 
