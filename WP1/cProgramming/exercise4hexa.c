@@ -32,9 +32,11 @@ int main(int argc, char *argv[]){
                 binaryInput[index++] = character;    
             // else statement that goes here if the input is not 1 or 0
             } else{
-                // break the while loop if this is the case
+                // print error message using fprintf (needed to use stderr)
+                // stderr is common when displaying error messages in console
                 fprintf(stderr, "Error: Non-binary character detected in input.\n");
-                return 1;
+                // return 2 (exit code) to indicate that the program did not run as intended, error
+                return 2;
             }
         }
         // set the null character at the end of the character array ("string")
@@ -46,7 +48,8 @@ int main(int argc, char *argv[]){
         int binaryInputValue = strtol(binaryInput, NULL, 2);
         printf("%X\n", binaryInputValue);
     // next part of the if statement that checks if an argument has been provided in the command line
-    } else if (argc == 2){
+    // also checks if the input is not equal to -h
+    } else if (argc == 2 && strcmp(argv[1], "-h") != 0){
         // declare and initialize pointer that points to the content of the argument in position 1,
         // provided by the user
         char *binaryInputArgument = argv[1];
@@ -55,10 +58,15 @@ int main(int argc, char *argv[]){
         int binaryInputValue = strtol(binaryInputArgument, NULL, 2);
         printf("%X\n", binaryInputValue);
     // else statement that covers all other cases, i.e. if no argument or more than 1 argument is being provided.
-    } else {
-        printf("Error. Provide exactly 1 argument.");
-        // return 1 to indicate error.
-        return 1;
+    } else if(argc != 2){
+        printf("Error. Provide exactly 1 argument. Call exe file with -h for more information.");
+        // return 2 to indicate error.
+        return 2;
+    // else if that checks if the input in argument position 1 is -h using strcmp, from string.h header file
+    } else if(strcmp(argv[1], "-h") == 0){
+        printf("Instructions: Provide exactly 1 argument. Provide the argument in binary form. Only 1s and 0s are allowed.");
+        // return 2 to indicate error.
+        return 2;
     }
     // return 0 to indicate success
     return 0;
