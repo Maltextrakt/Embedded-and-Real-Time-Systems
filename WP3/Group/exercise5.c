@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
         array[i] = rand() % 100;
     }
 
-    printf("The value of the address of the array is: %p\n", (void*)array);
+    printf("The value of the address of the array is: %p\n", ptr);
     printf("First integer in the array is: %d\n", array[0]);
     printf("The last integer of the array is: %d\n", array[MAX-1]);
     printf("The size of an integer is: %d\n", sizeof(int));

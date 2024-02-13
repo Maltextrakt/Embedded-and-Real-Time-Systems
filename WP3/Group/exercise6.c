@@ -21,7 +21,7 @@ void copyString(char *destinationToSaveString, char *stringToCopy){
 int main(int argc, char *argv[]){
 
     printf("Enter a string of maximum 20 characters: \n");
-    scanf("%19s", inputString);
+    scanf("%20s", inputString);
 
     char *ptr = inputString;
 

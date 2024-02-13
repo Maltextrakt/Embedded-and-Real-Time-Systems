@@ -1,8 +1,9 @@
 // C++ code
 // (C)_Isaac Lindegren Ternbom, Karl Eriksson, Malte Bengtsson, group 20 (2024)
 // Work package 3
-// Exercise 2 
+// Exercise 2_2 (actually 3, but mislabeled I believe, in the instructions)
 // Submission code: 285521
+
 
 int tempPin = A0; // declare and initialize analog A0 to read temperature
 int lightPin = A1; // declare and initialize analog A1 to read light level
@@ -11,11 +12,11 @@ int redLEDPin = 13; // declare and initialize red LED to pin 13
 int yellowLEDPin = 12; // declare and initialize yellow LED to pin 12
 int greenLEDPin = 11; // declare and initialize green LED to pin 11
 
-long interval = 2500; // declare and initialize interval to 2.5 sec
+long interval = 500; // declare and initialize interval to 0.5 sec
 long previousMillis = 0; // store last time was read, set to 0
 
 
-void setup(){ // setup part of the program
+void setup(){	// setup part of the program
   Serial.begin(9600); // start communication with computer, set baud to 9600
   
   pinMode(redLEDPin, OUTPUT); // set red LED pin to output
@@ -33,15 +34,15 @@ void loop(){ // loop section of the program that cintinuously runs
   if(currentMillis - previousMillis >= interval){ // determine if its time to read the sensor
     previousMillis = currentMillis; // update last read time
     
-    float voltage = analogRead(tempPin)* 5.0/1023.0; // read and convert temperature sensor value to V
-    float temperatureInCelcius = (voltage - 0.5)*100; // convert voltage to temp in Celcius
+    float voltage = analogRead(tempPin)* 5000.0/1023.0; // read and convert temperature sensor value to mV
+    float temperatureInCelcius = (voltage - 500.0)/10; // convert voltage to temp in Celcius
     
     int light = analogRead(lightPin); // read light sensor value 
     float lightPercentage = (light/1023.0)* 100; // convert light sensor value to %
     
     // prints
-    Serial.print("Temperature: ");
-    Serial.print(temperatureInCelcius);
+    Serial.print("Temperature: ");  
+    Serial.print(temperatureInCelcius); 
     Serial.print(" C, Light intensirty: ");
     Serial.print(lightPercentage);
     Serial.print("%");
@@ -64,9 +65,9 @@ void checkIfValid (float temp, float light){ // method that takes temperature an
       (temp >= 21 && light >= 61)) { // if that checks allowed values for temp and light combo
     digitalWrite(greenLEDPin, HIGH); // set green LED to on
   }else if(temp >= 21 && light <61){ // if that checks allowed values for temp and light combo
-    digitalWrite(redLEDPin, HIGH); // set the red LED to on
+    digitalWrite(redLEDPin, HIGH); // set red LED to on
   }else { // in all other cases go here
-    digitalWrite(yellowLEDPin,HIGH); // set the yellow LED to on
+    digitalWrite(yellowLEDPin,HIGH); // set yellow LED to on
   }
 }
   
