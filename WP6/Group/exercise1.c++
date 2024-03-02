@@ -1,4 +1,13 @@
+// C++ code
+//
+// (C)_Isaac Lindegren Ternbom, Karl Eriksson, Malte Bengtsson, group 20 (2024)
+// Work package 6
+// Exercise 1
+// Submission code: 271070
+
 // WP 6 Exercise 1 Template DIT 632
+// Task 2 and 3
+
 
 #define ENCA 2 // set ENCA pin to 2
 #define ENCB 3 // set ENCB pin to 3 
@@ -142,6 +151,11 @@ int getAction(int error){ // method that calculates motor action based on error
 }
 
 void ISR_readEncoder(){ // interrupt service routine that reads encoder vaklue
+/*
+  ==> TO DO TO DO TO DO
+  READ THE ENCODER SIGNAL HERE.
+  Read the encoder signals and increase or decrease pos accordingly.
+  */
   b = digitalRead(ENCB); // read current state of encoder pin b ENCB
   
   if(b == HIGH){ // if b signal is HIGH it indicates forward movement
@@ -151,11 +165,7 @@ void ISR_readEncoder(){ // interrupt service routine that reads encoder vaklue
   }
   
   
-  /*
-  ==> TO DO TO DO TO DO
-  READ THE ENCODER SIGNAL HERE.
-  Read the encoder signals and increase or decrease pos accordingly.
-  */
+  
 }
      
     

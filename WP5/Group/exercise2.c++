@@ -1,5 +1,10 @@
 // C++ code
 // Guide used from: https://www.instructables.com/Arduino-Timer-Interrupts/
+//
+// (C)_Isaac Lindegren Ternbom, Karl Eriksson, Malte Bengtsson, group 20 (2024)
+// Work package 5
+// Exercise 2
+// Submission code: 994475
 
 volatile boolean readTemperatureFlag = false; //set the flag that determines whether or not its time to read the temperature again, set to false
 

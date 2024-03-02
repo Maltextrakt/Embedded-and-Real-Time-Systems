@@ -1,4 +1,10 @@
 // C++ code
+//
+// (C)_Isaac Lindegren Ternbom, Karl Eriksson, Malte Bengtsson, group 20 (2024)
+// Work package 5
+// Exercise 1
+// Submission code: 994475
+
 
 int ledState = LOW;              // state of the output pin initialized to LOW (off)
 long previousMillis = 0;         // will store last time LED was updated
