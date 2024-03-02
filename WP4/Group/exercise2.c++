@@ -1,7 +1,10 @@
 // C++ code
 //
-// Guide used from: https://www.instructables.com/Arduino-Timer-Interrupts/
-
+// (C)_Isaac Lindegren Ternbom, Karl Eriksson, Malte Bengtsson, group 20 (2024)
+// Work package 4
+// Exercise 2
+// Submission code: 2014617
+// Lines 28-41 are inspired by a guide: https://www.instructables.com/Arduino-Timer-Interrupts/
 
 #include <Servo.h> // import servo library
 
@@ -19,6 +22,7 @@ void setup()// setup section of the code
   
   servo.attach(servoPin); // connect the servoPin to the servo object
   
+  // this section configures Timer2 to periodically trigger an interrupt 
   cli(); // clear/ stop interrupts to ensure that the following code is ran without potential interrupt, crucial code
   
   TCCR2A = 0; // reset the Timer2 Control Register A to default state
@@ -27,6 +31,7 @@ void setup()// setup section of the code
   
   OCR2A = 249; // set output compare register for Timer2 to 249 for 1HZ interrupt
   
+  // uses prescaler value 32
   TCCR2A |= (1 << WGM21); // set timer2 to "Clear Timer on Compare Match" mode
   TCCR2B |= (1 << CS21) | (1 << CS20); // set Timer2 prescaler to 32 to slow down the counting
   TIMSK2 |= (1 << OCIE2A); // enable Timer2 Output COmpare A Match Interrupt
